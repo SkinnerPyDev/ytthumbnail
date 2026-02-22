@@ -1,0 +1,28 @@
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 2px solid #000;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #444;                 /* soft grey text */
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 14px;           /* space to form shape */
+    border-radius: 8px;          /* rounded rectangle */
+    transition: 0.25s ease;
+}
+
+.navbar ul li a:hover {
+    background: #eaeaea;         /* light grey hover */
+    color: #000;                 /* dark text on hover */
+}

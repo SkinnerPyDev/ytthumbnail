@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Thumbnail Downloader</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/navb.css">
+    <link rel="stylesheet" href="/css/result.css">
+
+    <script defer src="/script/component.js"></script>
+    <script defer src="/script/js.js"></script>
+    <meta name="description" content="Download YouTube thumbnails in HD, SD, and Full HD for free. 
+    Paste your YouTube link and instantly preview and download the best-quality thumbnail.">
+</head>
+
+<body>
+
+<!-- CONTENT AREA (NEEDED FOR STICKY FOOTER) -->
+<div class="content-area">
+
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
+
+    <!-- MAIN SECTION -->
+    <div class="main-box">
+        <h1>YouTube Thumbnail Downloader</h1>
+        <p class="sub-text">Download thumbnails from any YouTube video in one click</p>
+        <p id="errorBox" class="error-msg"></p>
+        <input class="input-box" type="text" placeholder="Enter YouTube URL">
+        <button class="download-btn" onclick="handleDownload()">Download</button>
+        
+    </div>
+    <div id="result"></div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+</body>
+</html>

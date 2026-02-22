@@ -1,0 +1,78 @@
+/* 3 inline boxes center aligned */
+.quality-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+    margin-top: 10px;
+
+    margin-bottom: 40px;
+}
+
+/* Each box */
+.quality-box {
+    width: 250px;
+    border: 1px solid #ccc;          /* lighter, cleaner border */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background: #fafafa;             /* soft grey */
+    
+    display: flex;                   /* FIXED */
+    flex-direction: column;          /* FIXED */
+    justify-content: flex-start;  
+}
+
+/* Heading inside box */
+.quality-box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Thumbnail preview */
+.quality-box img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+
+    aspect-ratio: 16/9;
+    margin-bottom: 12px;
+}
+
+/* Download button */
+.dl-btn {
+    margin-top: auto;                /* FIXED — aligns button to bottom */
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #888;          /* better border */
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Hover effect */
+.dl-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+
+.quality-label {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: none;
+}
+
+
+
+
+#result {
+    display: none;
+}
