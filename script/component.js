@@ -14,9 +14,6 @@ async function initComponents() {
     await loadComponent("#footer", "/component/footer.html");
     await loadComponent("#navbar", "/component/navbar.html");
     await loadComponent("#result", "/component/result.html");
-
-
-    initUI();
-    
+    await loadComponent("#hasresult", "/component/hasresult.html");
 }
 document.addEventListener("DOMContentLoaded", initComponents);

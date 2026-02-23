@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>YouTube Thumbnail Downloader</title>
-
+    <link rel="icon" href="/images/f.png" type="image/png">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/navb.css">
     <link rel="stylesheet" href="/css/result.css">
+    <link rel="stylesheet" href="/css/footer.css">
 
     <script defer src="/script/component.js"></script>
     <script defer src="/script/js.js"></script>
@@ -17,26 +18,31 @@
 
 <body>
 
-<!-- CONTENT AREA (NEEDED FOR STICKY FOOTER) -->
-<div class="content-area">
+    <!-- CONTENT AREA (NEEDED FOR STICKY FOOTER) -->
+    <div class="content-area">
 
-    <!-- NAVBAR -->
-    <div id="navbar"></div>
+        <!-- NAVBAR -->
+        <div id="navbar"></div>
 
-    <!-- MAIN SECTION -->
-    <div class="main-box">
-        <h1>YouTube Thumbnail Downloader</h1>
-        <p class="sub-text">Download thumbnails from any YouTube video in one click</p>
-        <p id="errorBox" class="error-msg"></p>
-        <input class="input-box" type="text" placeholder="Enter YouTube URL">
-        <button class="download-btn" onclick="handleDownload()">Download</button>
+        <!-- MAIN SECTION -->
+        <div class="main-box">
+            <h1>YouTube Thumbnail Downloader</h1>
+            <p class="sub-text">Fast and free YouTube thumbnail downloader that supports SD, HD, and 1080p images.
+                Works with all YouTube links including Shorts.</p>
+            <p id="errorBox" class="error-msg"></p>
+            <input class="input-box" type="text" placeholder="Enter YouTube URL">
+            <button class="download-btn" onclick="handleDownload()">Download</button>
         
-    </div>
-    <div id="result"></div>
-</div>
 
-<!-- FOOTER -->
-<div id="footer"></div>
+            <div id="loadingBar" class="loading-bar"></div>
+
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
 
 </body>
+
 </html>

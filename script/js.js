@@ -1,5 +1,8 @@
 function handleDownload() {
 
+    // Always hide loading bar at beginning
+    document.getElementById("loadingBar").style.display = "none";
+
     document.getElementById("downloadSD").onclick = function () {
         const url = document.getElementById("sdImg").src;
         downloadImage(url, "thumbnail_sd.jpg");
@@ -24,7 +27,7 @@ function handleDownload() {
         return;
     }
 
-    // Check if YouTube link
+    // Invalid YouTube link
     if (!isValidYouTubeURL(url)) {
         showError("Please enter a valid YouTube link.");
         document.getElementById("result").style.display = "none";
@@ -42,46 +45,59 @@ function handleDownload() {
 
     hideError();
 
-    // SET THUMBNAILS
+    // Show loading bar only after validation
+    document.getElementById("loadingBar").style.display = "block";
+
+    // Thumbnail URLs
     const sd = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
     const hd = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
     const fhd = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
-    // 👉 Load images first, then check if they are deleted tiny images
-Promise.all([
-    sd,
-    hd,
-    fhd,
-].map(url => fetch(url).then(r => r.blob()).then(blob => createImageBitmap(blob).then(img => ({ img, url })))))
-.then(results => {
+    // Load images first to check if video exists
+    Promise.all(
+        [sd, hd, fhd].map(url =>
+            fetch(url)
+                .then(r => r.blob())
+                .then(blob =>
+                    createImageBitmap(blob).then(img => ({ img, url }))
+                )
+        )
+    )
+    .then(results => {
 
-    const sdImgData = results[0];
-    const hdImgData = results[1];
-    const fhdImgData = results[2];
+        const sdImgData = results[0];
+        const hdImgData = results[1];
+        const fhdImgData = results[2];
 
-    // ❗ Detect invalid thumbnails: 120 × 90 = deleted / invalid
-    const isInvalid =
-        (sdImgData.img.width === 120 && sdImgData.img.height === 90) &&
-        (hdImgData.img.width === 120 && hdImgData.img.height === 90) &&
-        (fhdImgData.img.width === 120 && fhdImgData.img.height === 90);
+        // Invalid thumbnails = deleted video
+        const isInvalid =
+            (sdImgData.img.width === 120 && sdImgData.img.height === 90) &&
+            (hdImgData.img.width === 120 && hdImgData.img.height === 90) &&
+            (fhdImgData.img.width === 120 && fhdImgData.img.height === 90);
 
-    if (isInvalid) {
-        showError("This video does not exist. Please check your URL.");
-        document.getElementById("result").style.display = "none";
+        if (isInvalid) {
+            showError("This video does not exist. Please check your URL.");
+            document.getElementById("result").style.display = "none";
 
-        document.getElementById("sdImg").src = "";
-        document.getElementById("hdImg").src = "";
-        document.getElementById("fullHdImg").src = "";
-        return;
-    }
+            document.getElementById("sdImg").src = "";
+            document.getElementById("hdImg").src = "";
+            document.getElementById("fullHdImg").src = "";
 
-    // VALID VIDEO → show thumbnails
-    document.getElementById("sdImg").src = sd;
-    document.getElementById("hdImg").src = hd;
-    document.getElementById("fullHdImg").src = fhd;
+            document.getElementById("loadingBar").style.display = "none";
+            return;
+        }
 
-    document.getElementById("result").style.display = "block";
-});
+        // Valid video → show images
+        document.getElementById("sdImg").src = sd;
+        document.getElementById("hdImg").src = hd;
+        document.getElementById("fullHdImg").src = fhd;
+
+        document.getElementById("result").style.display = "block";
+
+        setTimeout(() => {
+            document.getElementById("loadingBar").style.display = "none";
+        }, 700);
+    });
 }
 
 
@@ -102,39 +118,31 @@ function isValidYouTubeURL(url) {
     return pattern.test(url.trim());
 }
 
-
-
 function getVideoId(url) {
     url = url.trim();
 
-    // youtu.be short link
     if (url.includes("youtu.be/")) {
         return url.split("youtu.be/")[1].split(/[?&]/)[0];
     }
 
-    // watch?v=
     if (url.includes("watch?v=")) {
         return url.split("watch?v=")[1].split(/[?&]/)[0];
     }
 
-    // shorts/
     if (url.includes("/shorts/")) {
         return url.split("/shorts/")[1].split(/[?&]/)[0];
     }
 
-    // mobile watch?v=
     if (url.includes("m.youtube.com/watch?v=")) {
         return url.split("watch?v=")[1].split(/[?&]/)[0];
     }
 
-    // embed/
     if (url.includes("/embed/")) {
         return url.split("/embed/")[1].split(/[?&]/)[0];
     }
 
     return null;
 }
-
 
 function downloadImage(url, filename) {
     fetch(url)
@@ -151,8 +159,6 @@ function downloadImage(url, filename) {
         });
 }
 
-
-
 async function getBestThumbnail(videoId) {
     const base = `https://img.youtube.com/vi/${videoId}/`;
 
@@ -168,16 +174,15 @@ async function getBestThumbnail(videoId) {
         const res = await fetch(url);
 
         if (res.ok && res.status === 200) {
-            return url; // return first working thumbnail
+            return url;
         }
     }
 
-    return null; // should never happen
+    return null;
 }
 
-
 function isDeletedThumbnail(url) {
-    return url.includes("default.jpg"); // tiny 120x90 fallback
+    return url.includes("default.jpg");
 }
 
 document.querySelector(".input-box").addEventListener("keyup", function (event) {
@@ -185,8 +190,3 @@ document.querySelector(".input-box").addEventListener("keyup", function (event) 
         handleDownload();
     }
 });
-
-
-
-
-

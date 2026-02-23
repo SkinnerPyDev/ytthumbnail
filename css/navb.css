@@ -1,28 +1,59 @@
-/* NAVBAR */
 .navbar {
     width: 100%;
-    padding: 20px 0;
-    border-bottom: 2px solid #000;
-}
-
-.navbar ul {
-    list-style: none;
+    padding: 15px 20px;
+    border-bottom: 1px solid #000;
     display: flex;
-    justify-content: center;
-    gap: 35px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar ul li a {
+/* Logo Left */
+.nav-left .logo {
     text-decoration: none;
-    color: #444;                 /* soft grey text */
-    font-size: 16px;
-    font-weight: 500;
-    padding: 8px 14px;           /* space to form shape */
-    border-radius: 8px;          /* rounded rectangle */
-    transition: 0.25s ease;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.navbar ul li a:hover {
-    background: #eaeaea;         /* light grey hover */
-    color: #000;                 /* dark text on hover */
+/* Right links */
+.nav-right {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-right a {
+    text-decoration: none;
+    color: #444;
+    font-size: 15px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+.nav-right a:hover {
+    background: #eaeaea;
+    color: #000;
+}
+
+
+/* Wrap: makes logo + text inline */
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Logo image */
+.nav-logo {
+    height: 28px;
+    width: auto;
+    margin-right: 8px;     /* space between logo + text */
+}
+
+/* Text beside logo */
+.logo-text {
+    font-size: 18px;
+    color: #000;           /* pure black */
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }

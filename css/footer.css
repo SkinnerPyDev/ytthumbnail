@@ -2,10 +2,11 @@ footer {
     margin-top: auto;
     text-align: center;
     padding: 20px 0;
-    border-top: 2px solid #000;
+    border-top: 1px solid #000;
 }
 
 footer p {
     color: #555;
     font-size: 14px;
 }
+
