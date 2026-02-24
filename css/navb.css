@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    padding: 15px 20px;
+    padding: 14px 20px;
     border-bottom: 1px solid #000;
     display: flex;
     justify-content: space-between;
@@ -25,13 +25,13 @@
     text-decoration: none;
     color: #444;
     font-size: 15px;
-    padding: 6px 12px;
+    padding: 10px 8px;
     border-radius: 6px;
     transition: 0.2s ease;
 }
 
 .nav-right a:hover {
-    background: #eaeaea;
+    background: #f5f3f3;
     color: #000;
 }
 

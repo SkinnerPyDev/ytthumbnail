@@ -1,0 +1,75 @@
+/* TOOL PAGE CONTENT SECTIONS */
+.tool-content {
+    width: 900px;
+    max-width: 95%;
+    margin: 30px auto 40px auto;
+    text-align: left;
+}
+
+.tool-content-box {
+    background: #fafafa;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    padding: 30px 25px;
+    margin-bottom: 25px;
+}
+
+.tool-content-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+}
+
+.tool-content-box h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 18px;
+    margin-bottom: 6px;
+    color: #111;
+}
+
+.tool-content-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #333;
+    margin: 8px 0 14px;
+}
+
+.tool-content-box ol,
+.tool-content-box ul {
+    margin: 10px 0 16px 20px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333;
+}
+
+.tool-content-box li {
+    margin-bottom: 6px;
+}
+
+/* FAQ SECTION */
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 14px 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.faq-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 6px;
+}
+
+.faq-a {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
+}

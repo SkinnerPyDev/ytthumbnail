@@ -38,7 +38,12 @@ function handleDownload() {
     const videoId = getVideoId(url);
 
     if (!videoId) {
-        showError("Invalid YouTube Link. Cannot extract video ID.");
+        // Check if it's a channel URL
+        if (url.includes("/@") || url.includes("/channel/") || url.includes("/c/") || url.includes("/user/")) {
+            showError("This looks like a channel URL. Please enter a video URL instead.");
+        } else {
+            showError("Invalid YouTube Link. Cannot extract video ID.");
+        }
         document.getElementById("result").style.display = "none";
         return;
     }
@@ -63,41 +68,45 @@ function handleDownload() {
                 )
         )
     )
-    .then(results => {
+        .then(results => {
 
-        const sdImgData = results[0];
-        const hdImgData = results[1];
-        const fhdImgData = results[2];
+            const sdImgData = results[0];
+            const hdImgData = results[1];
+            const fhdImgData = results[2];
 
-        // Invalid thumbnails = deleted video
-        const isInvalid =
-            (sdImgData.img.width === 120 && sdImgData.img.height === 90) &&
-            (hdImgData.img.width === 120 && hdImgData.img.height === 90) &&
-            (fhdImgData.img.width === 120 && fhdImgData.img.height === 90);
+            // Invalid thumbnails = deleted video
+            const isInvalid =
+                (sdImgData.img.width === 120 && sdImgData.img.height === 90) &&
+                (hdImgData.img.width === 120 && hdImgData.img.height === 90) &&
+                (fhdImgData.img.width === 120 && fhdImgData.img.height === 90);
 
-        if (isInvalid) {
-            showError("This video does not exist. Please check your URL.");
-            document.getElementById("result").style.display = "none";
+            if (isInvalid) {
+                showError("This video does not exist. Please check your URL.");
+                document.getElementById("result").style.display = "none";
 
-            document.getElementById("sdImg").src = "";
-            document.getElementById("hdImg").src = "";
-            document.getElementById("fullHdImg").src = "";
+                document.getElementById("sdImg").src = "";
+                document.getElementById("hdImg").src = "";
+                document.getElementById("fullHdImg").src = "";
 
+                document.getElementById("loadingBar").style.display = "none";
+                return;
+            }
+
+            // Valid video → show images
+            document.getElementById("sdImg").src = sd;
+            document.getElementById("hdImg").src = hd;
+            document.getElementById("fullHdImg").src = fhd;
+
+            document.getElementById("result").style.display = "block";
+
+            setTimeout(() => {
+                document.getElementById("loadingBar").style.display = "none";
+            }, 700);
+        })
+        .catch(() => {
             document.getElementById("loadingBar").style.display = "none";
-            return;
-        }
-
-        // Valid video → show images
-        document.getElementById("sdImg").src = sd;
-        document.getElementById("hdImg").src = hd;
-        document.getElementById("fullHdImg").src = fhd;
-
-        document.getElementById("result").style.display = "block";
-
-        setTimeout(() => {
-            document.getElementById("loadingBar").style.display = "none";
-        }, 700);
-    });
+            showError("Something went wrong. Please try again.");
+        });
 }
 
 
@@ -141,6 +150,10 @@ function getVideoId(url) {
         return url.split("/embed/")[1].split(/[?&]/)[0];
     }
 
+    if (url.includes("/live/")) {
+        return url.split("/live/")[1].split(/[?&]/)[0];
+    }
+
     return null;
 }
 
@@ -159,31 +172,7 @@ function downloadImage(url, filename) {
         });
 }
 
-async function getBestThumbnail(videoId) {
-    const base = `https://img.youtube.com/vi/${videoId}/`;
 
-    const qualities = [
-        "maxresdefault.jpg",
-        "hqdefault.jpg",
-        "mqdefault.jpg",
-        "default.jpg"
-    ];
-
-    for (let q of qualities) {
-        const url = base + q;
-        const res = await fetch(url);
-
-        if (res.ok && res.status === 200) {
-            return url;
-        }
-    }
-
-    return null;
-}
-
-function isDeletedThumbnail(url) {
-    return url.includes("default.jpg");
-}
 
 document.querySelector(".input-box").addEventListener("keyup", function (event) {
     if (event.key === "Enter" && this.value.trim() !== "") {

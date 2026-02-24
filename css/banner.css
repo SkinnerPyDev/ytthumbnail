@@ -1,0 +1,55 @@
+.banner-result-box {
+    width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.banner-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.banner-preview img {
+    width: 100%;
+    max-width: 880px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.banner-download-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 2px solid #000;
+    background: #fff;
+    transition: 0.2s;
+}
+
+.banner-download-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* THUMBNAIL RESULT BOX */
+.thumb-result-box {
+    width: 1100px;
+    max-width: 95%;
+}
+
+.thumb-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #000;
+    background: #fff;
+    margin-bottom: 20px;
+}
