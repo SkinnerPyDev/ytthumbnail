@@ -95,7 +95,27 @@ function handleDownload() {
             // Valid video → show images
             document.getElementById("sdImg").src = sd;
             document.getElementById("hdImg").src = hd;
-            document.getElementById("fullHdImg").src = fhd;
+
+            // Check if Full HD (maxresdefault) is available
+            // YouTube returns a 120x90 placeholder when maxresdefault doesn't exist
+            const fhdAvailable = !(fhdImgData.img.width === 120 && fhdImgData.img.height === 90);
+            const fhdBox = document.getElementById("fullHdImg").closest(".quality-box");
+            const fhdLabel = fhdBox ? fhdBox.querySelector(".quality-label") : null;
+
+            if (fhdAvailable) {
+                document.getElementById("fullHdImg").src = fhd;
+                if (fhdLabel) {
+                    fhdLabel.textContent = "Best Quality Available";
+                    fhdLabel.style.color = "";
+                }
+            } else {
+                // Fall back to HD image for the FHD slot
+                document.getElementById("fullHdImg").src = hd;
+                if (fhdLabel) {
+                    fhdLabel.textContent = "Full HD not available – showing HD instead";
+                    fhdLabel.style.color = "#e67e22";
+                }
+            }
 
             document.getElementById("result").style.display = "block";
 
