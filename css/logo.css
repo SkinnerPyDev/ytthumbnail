@@ -39,3 +39,16 @@
     background: #000;
     color: #fff;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .logo-result-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .logo-preview img {
+        width: 160px;
+        height: 160px;
+    }
+}

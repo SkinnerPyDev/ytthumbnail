@@ -53,3 +53,15 @@
     background: #fff;
     margin-bottom: 20px;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .banner-result-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .thumb-result-box {
+        width: 95%;
+    }
+}

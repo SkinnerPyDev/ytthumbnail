@@ -4,8 +4,8 @@
     width: 100%;
     background: #ffffff;
     padding: 15px 25px;
-    
-    box-shadow: 0px 1px 4px rgba(0,0,0,0.08);
+
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,5 +32,33 @@
 
 /* Hover effect */
 .footer-right a:hover {
-    background: #eeecec; /* light grey hover */
+    background: #eeecec;
+    /* light grey hover */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 12px;
+        padding: 20px 15px;
+    }
+
+    .footer-right {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .footer-right a {
+        margin-left: 0;
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+
+    .footer-left {
+        font-size: 13px;
+        color: #666;
+    }
 }

@@ -12,15 +12,19 @@
 /* Each box */
 .quality-box {
     width: 250px;
-    border: 1px solid #ccc;          /* lighter, cleaner border */
+    border: 1px solid #ccc;
+    /* lighter, cleaner border */
     border-radius: 10px;
     padding: 15px;
     text-align: center;
-    background: #fafafa;             /* soft grey */
-    
-    display: flex;                   /* FIXED */
-    flex-direction: column;          /* FIXED */
-    justify-content: flex-start;  
+    background: #fafafa;
+    /* soft grey */
+
+    display: flex;
+    /* FIXED */
+    flex-direction: column;
+    /* FIXED */
+    justify-content: flex-start;
 }
 
 /* Heading inside box */
@@ -43,11 +47,13 @@
 
 /* Download button */
 .dl-btn {
-    margin-top: auto;                /* FIXED — aligns button to bottom */
+    margin-top: auto;
+    /* FIXED — aligns button to bottom */
     width: 100%;
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #888;          /* better border */
+    border: 1px solid #888;
+    /* better border */
     background: #fff;
     border-radius: 6px;
     cursor: pointer;
@@ -78,3 +84,21 @@
 }
 
 
+/* MOBILE */
+@media (max-width: 768px) {
+    .quality-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .quality-box {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .quality-box img {
+        height: auto;
+    }
+}

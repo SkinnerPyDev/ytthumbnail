@@ -47,13 +47,73 @@
 .nav-logo {
     height: 28px;
     width: auto;
-    margin-right: 8px;     /* space between logo + text */
+    margin-right: 8px;
+    /* space between logo + text */
 }
 
 /* Text beside logo */
 .logo-text {
     font-size: 18px;
-    color: #000;           /* pure black */
+    color: #000;
+    /* pure black */
     font-weight: 600;
     letter-spacing: 0.3px;
+}
+
+/* Hamburger button — hidden on desktop */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: #000;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-right {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-bottom: 1px solid #000;
+        padding: 10px 0;
+        z-index: 100;
+    }
+
+    .nav-right.nav-open {
+        display: flex;
+    }
+
+    .nav-right a {
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 0;
+    }
+
+    .nav-right a:hover {
+        background: #f0f0f0;
+    }
+
+    .navbar {
+        position: relative;
+    }
 }

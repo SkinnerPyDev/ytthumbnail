@@ -17,3 +17,9 @@ async function initComponents() {
     await loadComponent("#hasresult", "/component/hasresult.html");
 }
 document.addEventListener("DOMContentLoaded", initComponents);
+
+// Hamburger menu toggle
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("nav-open");
+}
