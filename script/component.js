@@ -1,9 +1,20 @@
+// Change this version number whenever you deploy new CSS/JS changes
+const CACHE_VERSION = "1.0.1";
+
+function bustCache() {
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+        if (link.href && !link.href.includes('fonts.googleapis.com')) {
+            link.href = link.href.split('?')[0] + '?v=' + CACHE_VERSION;
+        }
+    });
+}
+
 async function loadComponent(selector, file) {
     let el = document.querySelector(selector);
     if (!el) return;
 
     try {
-        let html = await fetch(file).then(r => r.text());
+        let html = await fetch(file + '?v=' + CACHE_VERSION).then(r => r.text());
         el.innerHTML = html;
     } catch (err) {
         console.error("Failed to load:", file, err);
@@ -11,6 +22,7 @@ async function loadComponent(selector, file) {
 }
 
 async function initComponents() {
+    bustCache();
     await loadComponent("#footer", "/component/footer.html");
     await loadComponent("#navbar", "/component/navbar.html");
     await loadComponent("#result", "/component/result.html");
