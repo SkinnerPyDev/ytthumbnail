@@ -157,7 +157,34 @@ function getVideoId(url) {
     return null;
 }
 
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function showToast(message) {
+    let toast = document.getElementById("ios-toast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "ios-toast";
+        toast.style.cssText = "position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);color:#fff;padding:14px 24px;border-radius:12px;font-size:15px;z-index:99999;text-align:center;max-width:90%;backdrop-filter:blur(8px);transition:opacity 0.4s";
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = "1";
+    setTimeout(() => { toast.style.opacity = "0"; }, 3500);
+}
+
 function downloadImage(url, filename) {
+    if (isIOS()) {
+        // iOS Safari doesn't support blob download — open in new tab
+        const w = window.open(url, "_blank");
+        if (!w) {
+            // Pop-up blocked fallback
+            window.location.href = url;
+        }
+        showToast("Long-press the image and tap 'Save Image'");
+        return;
+    }
     fetch(url)
         .then(res => res.blob())
         .then(blob => {

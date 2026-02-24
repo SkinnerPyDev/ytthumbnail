@@ -1,3 +1,21 @@
+// iOS DETECTION + TOAST
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function showToast(message) {
+    let toast = document.getElementById("ios-toast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "ios-toast";
+        toast.style.cssText = "position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);color:#fff;padding:14px 24px;border-radius:12px;font-size:15px;z-index:99999;text-align:center;max-width:90%;backdrop-filter:blur(8px);transition:opacity 0.4s";
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = "1";
+    setTimeout(() => { toast.style.opacity = "0"; }, 3500);
+}
+
 // ELEMENTS
 const input = document.getElementById("ytChannelInput");
 const btn = document.getElementById("logoExtractBtn");
@@ -57,6 +75,12 @@ async function getLogo() {
 
         // DOWNLOAD
         downloadBtn.onclick = async () => {
+            if (isIOS()) {
+                const w = window.open(data.logo, "_blank");
+                if (!w) window.location.href = data.logo;
+                showToast("Long-press the image and tap 'Save Image'");
+                return;
+            }
             try {
                 const response = await fetch(data.logo);
                 const blob = await response.blob();
