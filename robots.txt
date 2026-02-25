@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /component/
 
 Sitemap: https://downloadythumbnail.online/sitemap.xml

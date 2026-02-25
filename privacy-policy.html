@@ -17,7 +17,7 @@
         content="Read our privacy policy. We do not collect, store, or track any personal data. All processing happens on your device.">
     <meta name="keywords" content="privacy policy, download ythumbnail privacy, data policy, no tracking">
     <meta name="author" content="Download YouTube Thumbnail">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="_qxK9Ke60VKIBQINKV85Ez3a-HtHmIyoevdoc7ze84s" />
     <meta name="msvalidate.01" content="7D561566D83D8FBD7AD7788C9E3D979F" />
 
@@ -41,11 +41,33 @@
     <link rel="stylesheet" href="/css/artcl.css">
 
     <script defer src="/script/component.js"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://downloadythumbnail.online/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": "https://downloadythumbnail.online/privacy-policy.html"
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
 
-    <div class="content-area">
+    <main class="content-area">
 
         <!-- Navbar -->
         <div id="navbar"></div>
@@ -56,7 +78,7 @@
         <p class="last-updated">Last updated: 24 February 2026</p>
 
         <!-- Article Box -->
-        <div class="main-box article-box">
+        <article class="main-box article-box">
 
             <h2>1. Introduction</h2>
             <p>
@@ -69,12 +91,12 @@
             <p>
                 We do not collect or store:
             </p>
-            <p>
-                • Personal data
-                • YouTube links or video IDs
-                • Extracted thumbnails, hashtags, transcripts, titles, or metadata
-                • IP addresses or browsing history
-            </p>
+            <ul>
+                <li>Personal data</li>
+                <li>YouTube links or video IDs</li>
+                <li>Extracted thumbnails, hashtags, transcripts, titles, or metadata</li>
+                <li>IP addresses or browsing history</li>
+            </ul>
             <p>
                 All processing happens directly on your device in real time.
             </p>
@@ -115,9 +137,9 @@
                 If you have any questions about this Privacy Policy, please reach out through our Contact page.
             </p>
 
-        </div>
+        </article>
 
-    </div>
+    </main>
 
     <!-- Footer -->
     <div id="footer"></div>

@@ -17,7 +17,7 @@
         content="Read our terms and conditions. Our tools are for personal and educational use only. We do not host or store any YouTube content.">
     <meta name="keywords" content="terms and conditions, download ythumbnail terms, usage terms, disclaimer">
     <meta name="author" content="Download YouTube Thumbnail">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="_qxK9Ke60VKIBQINKV85Ez3a-HtHmIyoevdoc7ze84s" />
     <meta name="msvalidate.01" content="7D561566D83D8FBD7AD7788C9E3D979F" />
 
@@ -40,11 +40,33 @@
     <link rel="stylesheet" href="/css/artcl.css">
 
     <script defer src="/script/component.js"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://downloadythumbnail.online/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms & Conditions",
+          "item": "https://downloadythumbnail.online/terms-and-conditions.html"
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
 
-    <div class="content-area">
+    <main class="content-area">
 
         <!-- NAVBAR -->
         <div id="navbar"></div>
@@ -53,7 +75,7 @@
         <h1 class="article-title">Terms & Conditions</h1>
         <p class="last-updated">Last updated: 24 February 2026</p>
         <!-- Main article box -->
-        <div class="main-box article-box">
+        <article class="main-box article-box">
 
             <h2>1. Introduction</h2>
             <p>
@@ -103,9 +125,9 @@
                 For any questions related to these Terms, please reach out via our Contact page.
             </p>
 
-        </div>
+        </article>
 
-    </div>
+    </main>
 
     <!-- FOOTER -->
     <div id="footer"></div>
