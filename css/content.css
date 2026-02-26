@@ -49,6 +49,19 @@
     margin-bottom: 6px;
 }
 
+.tool-content-box a {
+    color: #0000EE;
+    text-decoration: none;
+}
+
+.tool-content-box a:visited {
+    color: #0000EE;
+}
+
+.tool-content-box a:hover {
+    text-decoration: underline;
+}
+
 /* FAQ SECTION */
 .faq-item {
     background: #f7f7f7;
