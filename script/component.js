@@ -23,8 +23,16 @@ async function loadComponent(selector, file) {
 
 async function initComponents() {
     bustCache();
-    await loadComponent("#footer", "/component/footer.html");
-    await loadComponent("#navbar", "/component/navbar.html");
+    // Only fetch components that aren't already inlined in the page HTML
+    const navbar = document.querySelector("#navbar");
+    const footer = document.querySelector("#footer");
+
+    if (navbar && !navbar.innerHTML.trim()) {
+        await loadComponent("#navbar", "/component/navbar.html");
+    }
+    if (footer && !footer.innerHTML.trim()) {
+        await loadComponent("#footer", "/component/footer.html");
+    }
     await loadComponent("#result", "/component/result.html");
     await loadComponent("#hasresult", "/component/hasresult.html");
 }
